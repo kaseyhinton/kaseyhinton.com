@@ -1,10 +1,11 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://kaseyhinton.com',
   pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+  title: 'Kasey Hinton',
+  subtitle:
+    'I am a front-end software engineer in Southern Utah. I love web development. I enjoy developing projects from concept to delivery. I am driven and love pursuing new challenges.',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
@@ -25,19 +26,20 @@ module.exports = {
     }
   ],
   author: {
-    name: 'John Doe',
+    name: 'Kasey Hinton',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio:
+      'I am a front-end software engineer in Southern Utah. I love web development. I enjoy developing projects from concept to delivery. I am driven and love pursuing new challenges.',
     contacts: {
       email: '',
       facebook: '#',
       telegram: '#',
       twitter: '#',
-      github: '#',
+      github: 'https://github.com/kaseyhinton',
       rss: '',
       vkontakte: '',
       linkedin: '#',
-      instagram: '#',
+      instagram: 'https://instagram.com/kaz_jay',
       line: '',
       gitlab: '',
       weibo: '',
