@@ -5,7 +5,7 @@ module.exports = {
   pathPrefix: '/',
   title: 'Kasey Hinton',
   subtitle:
-    'I am a front-end software engineer in Southern Utah. I love web development. I enjoy developing projects from concept to delivery. I am driven and love pursuing new challenges.',
+    'I am a software engineer in Southern Utah. I use TypeScript, JavaScript, HTML, CSS, Polymer, Web components, Lit, Gatsby, React, C#, and .Net ',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
@@ -29,21 +29,13 @@ module.exports = {
     name: 'Kasey Hinton',
     photo: '/photo.jpg',
     bio:
-      'I am a front-end software engineer in Southern Utah. I love web development. I enjoy developing projects from concept to delivery. I am driven and love pursuing new challenges.',
+      'I am a software engineer in Southern Utah. I use TypeScript, JavaScript, HTML, CSS, Polymer, Web components, Lit, Gatsby, React, C#, and .Net ',
     contacts: {
       email: '',
       facebook: '#',
-      telegram: '#',
-      twitter: '#',
       github: 'https://github.com/kaseyhinton',
       rss: '',
-      vkontakte: '',
-      linkedin: '#',
-      instagram: 'https://instagram.com/kaz_jay',
-      line: '',
-      gitlab: '',
-      weibo: '',
-      codepen: ''
+      instagram: 'https://instagram.com/kaz_jay'
     }
   }
 };

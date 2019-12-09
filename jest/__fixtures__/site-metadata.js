@@ -29,7 +29,6 @@ module.exports = {
         bio: 'Test bio',
         contacts: {
           email: '#',
-          telegram: '#',
           twitter: '#',
           github: '#',
           rss: '#',
