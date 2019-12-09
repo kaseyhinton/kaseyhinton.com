@@ -33,9 +33,9 @@ module.exports = {
     contacts: {
       email: '',
       facebook: '#',
-      github: 'https://github.com/kaseyhinton',
+      github: 'kaseyhinton',
       rss: '',
-      instagram: 'https://instagram.com/kaz_jay'
+      instagram: 'kaz_jay'
     }
   }
 };
