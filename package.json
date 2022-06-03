@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "docsify serve docs --open",
+    "publish": "git push piku master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
