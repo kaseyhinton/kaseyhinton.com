@@ -12,11 +12,11 @@ exports[`CategoriesTemplate renders correctly 1`] = `
           <a
             href="/"
           >
-            John Doe
+            Kasey Hinton
           </a>
         </h2>
         <p>
-          Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.
+          Kasey Hinton Knowledge Archive.
         </p>
       </div>
       <nav>
