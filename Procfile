@@ -1,2 +1,1 @@
-web: npm run build
-release: cd public && http-server
+release: npm run build && cd public && http-server
