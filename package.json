@@ -28,7 +28,8 @@
     "prepare": "husky install",
     "semantic-release": "semantic-release",
     "serve": "gatsby serve",
-    "start": "npm run clean && gatsby develop"
+    "start": "npm run clean && gatsby develop",
+    "start:build": "cd public && npm run http-server"
   },
   "commitlint": {
     "extends": [
