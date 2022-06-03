@@ -1,1 +1,1 @@
-web: cd public && http-server
+web: npm run build && cd public && http-server
