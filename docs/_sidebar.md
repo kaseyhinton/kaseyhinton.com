@@ -1,5 +1,8 @@
 - [Home](/#overview)
 - [About](about.md)
 - Technology
-    - [Piku](piku.md)
-
+  - [Piku](piku.md)
+  - [Libraries](libraries.md)
+  - [Links](links.md)
+  - [Designs](designs.md)
+  - [Learning](learning.md)
