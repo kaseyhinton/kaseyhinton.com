@@ -1,1 +1,1 @@
-release: npm install && npm run build && cd public && http-server
+web: cd public && http-server

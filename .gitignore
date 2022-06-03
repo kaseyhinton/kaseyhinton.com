@@ -13,7 +13,6 @@ pids
 .vscode
 
 # build
-public
 
 # cache
 .cache
