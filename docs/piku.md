@@ -1,4 +1,3 @@
-
 # Piku PaaS Setup
 
 ### Helpful Links
@@ -120,6 +119,15 @@ To find the files actually under the hood that Piku uses (Nginx configs etc)
 ls /home/piku/.piku
 
 acme  apps  envs  logs  nginx  repos  uwsgi  uwsgi-available  uwsgi-enabled
+```
+
+To clear out NGINX logs - full explanation [here](https://stackoverflow.com/questions/32410053/clean-var-log-nginx-logs-file)
+
+```bash
+cd /var/log/nginx
+mv access.log access.log.old
+mv error.log error.log.old
+kill -USR1 `cat /var/run/nginx.pid`
 ```
 
 SSH Commands
