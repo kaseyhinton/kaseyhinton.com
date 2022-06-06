@@ -1,7 +1,9 @@
 - [Home](/#overview)
-- [About](about.md)
+- [Resume](resume.md)
 - Technology
   - [Piku](piku.md)
+  - [Nginx](nginx.md)
+  - [Lit Application Development](litdevelopment.md)
   - [Libraries](libraries.md)
   - [Links](links.md)
   - [Designs](designs.md)
