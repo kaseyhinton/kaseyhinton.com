@@ -1,5 +1,4 @@
 - [Home](/#overview)
-- [Resume](resume.md)
 - Technology
   - [Piku](piku.md)
   - [Linux](linux.md)

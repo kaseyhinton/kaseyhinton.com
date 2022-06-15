@@ -1,5 +1,0 @@
-# Resume
-
-```pdf
-KaseyHintonResume.pdf
-```
