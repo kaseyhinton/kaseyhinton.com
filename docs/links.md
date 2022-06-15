@@ -21,3 +21,5 @@
 [Dokku](https://github.com/dokku/dokku)
 
 [Nextcloud](https://nextcloud.com/)
+
+[dotnet publish](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish)

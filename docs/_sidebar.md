@@ -2,6 +2,10 @@
 - [Resume](resume.md)
 - Technology
   - [Piku](piku.md)
+  - [Linux](linux.md)
+  - [Nodejs](nodejs.md)
+  - [C#](csharp.md)
+  - [JavaScript](js.md)
   - [Nginx](nginx.md)
   - [Lit Application Development](litdevelopment.md)
   - [Libraries](libraries.md)
