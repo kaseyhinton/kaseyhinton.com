@@ -44,9 +44,9 @@
 
 [33 javascript concepts](https://github.com/leonardomso/33-js-concepts#8-iife-modules-and-namespaces)
 
-[hand of cards css][https://codepen.io/jackrugile/pen/wzgegm]
+[hand of cards css](https://codepen.io/jackrugile/pen/wzgegm)
 
-[clash of clans card css][https://codepen.io/drehimself/pen/qnxpyp]
+[clash of clans card css](https://codepen.io/drehimself/pen/qnxpyp)
 
 [lightrouter](https://github.com/garygreen/lightrouter)
 
