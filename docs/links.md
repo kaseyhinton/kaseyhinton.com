@@ -28,6 +28,42 @@
 
 [pocketlang](https://thakeenathees.github.io/pocketlang/#/)
 
+[kor web components](https://kor-ui.com/)
+
+[ubuntu touch web app](https://phone.docs.ubuntu.com/en/web/tutorials/web-app-tutorial)
+
+[ceresdb](https://github.com/CeresDB/ceresdb)
+
+[skyline switch emulator](https://skyline-emu.one/#about)
+
+[svg spinners](https://github.com/n3r4zzurr0/svg-spinners)
+
+[cert library](https://www.certlibrary.com/)
+
+[react desktop](https://github.com/gabrielbull/react-desktop)
+
+[33 javascript concepts](https://github.com/leonardomso/33-js-concepts#8-iife-modules-and-namespaces)
+
+[hand of cards css][https://codepen.io/jackrugile/pen/wzgegm]
+
+[clash of clans card css][https://codepen.io/drehimself/pen/qnxpyp]
+
+[lightrouter](https://github.com/garygreen/lightrouter)
+
+[scale8 alternative to google analytics](https://github.com/scale8/scale8-tag-manager-and-analytics)
+
+[space rex dynamic dns on ubiquiti](https://www.youtube.com/watch?v=pflZ87aX3tg)
+
+[twelve factor app](https://12factor.net/)
+
+[cool landing page](https://github.com/rcarmo/sui)
+
+## Virtual Machine
+
+[home lab tutorial](https://mtlynch.io/building-a-vm-homelab/)
+
+[proxmox](https://www.proxmox.com/en/proxmox-ve)
+
 ## Microservices
 
 [Molecular](https://github.com/moleculerjs/moleculer)
