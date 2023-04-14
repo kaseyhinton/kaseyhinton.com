@@ -49,15 +49,23 @@ ping <ip>
 
 ### Nmap
 
+#### Initial discovery
+
 ```bash
 # -sC default scripts
 # -sV probe open ports
 # -Pn skip host discovery
 # -oA output in three major formats
 # -sn ping scan
+# -A aggresive
+nmap -sC -sV -A -Pn <ip>
+```
 
-nmap -sC -sV <ip>
+#### Vulnerability analysis
 
+```bash
+ls /usr/share/nmap/scripts/ | grep smb
+nmap --script smb* -p 139 <ip>
 ```
 
 ### NetCat
@@ -144,7 +152,6 @@ cd package
 pip install -r requirements.txt
 ```
 
-
 ### SQL Injection
 
 #### Damn Small SQLi Scanner
@@ -154,7 +161,6 @@ sudo git clone https://github.com/stamparm/DSSS.git
 cd DSSS
 python3 dsss.py -u "<target>"
 ```
-
 
 ## General Tips
 
