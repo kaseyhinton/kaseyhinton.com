@@ -1,5 +1,24 @@
 # Security
 
+## ClamAV
+
+### Setup
+
+- Download & Install
+- copy clamd.conf & freshclam.conf to installation folder and comment out `# Example` line in each file
+- open powershell in admin -> `./freshclam.exe`;
+
+### Scan
+
+```bash
+# -i display infected files
+# -r recursively scan subdirectories
+# --log output file for results
+./clamscan C:\Users\myuser -r -i --log=scanresult.txt
+```
+
+[ClamAV Docs](https://docs.clamav.net/Introduction.html)
+
 ## Cloud
 
 Start a docker ParrotOS cloud container
@@ -169,6 +188,35 @@ python3 dsss.py -u "<target>"
 - Upload to discord
 - Copy cdn path
 - Use with beef-xss or anywhere else to deliver payload
+
+### Digispark
+
+#### Sample Script
+
+```cpp
+#include "DigiKeyboard.h"
+
+void setup() {
+DigiKeyboard.sendKeyStroke(0);
+DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT); // WIN + R
+DigiKeyboard.println("chrome.exe https://www.youtube.com/watch?v=dQw4w9WgXcQ"); // Open chrome with funny video
+DigiKeyboard.sendKeyStroke(KEY_ENTER);
+DigiKeyboard.delay(600);
+DigiKeyboard.sendKeyStroke(0);
+DigiKeyboard.sendKeyStroke(KEY_F11); // Fullscreen browser
+DigiKeyboard.delay(1200);
+DigiKeyboard.sendKeyStroke(0);
+DigiKeyboard.sendKeyStroke(KEY_F); // Fullscreen video
+}
+```
+
+[convert duckyscript to c++](https://github.com/CedArctic/digiQuack)
+[DigiSpark-Scripts](https://github.com/CedArctic/DigiSpark-Scripts)
+[Additional scripts](https://github.com/MTK911/Attiny85)
+[Flashsploit](https://github.com/thewhiteh4t/flashsploit)
+[hak5rubberducky scripts](https://github.com/hak5/usbrubberducky-payloads)
+[WiFi Duck](https://github.com/SpacehuhnTech/WiFiDuck)
+[Python on a chip](https://github.com/jsnyder/python-on-a-chip)
 
 ### Online tools
 
