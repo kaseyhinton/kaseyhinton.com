@@ -63,3 +63,23 @@ class IpAddressCacheResult
     public DateTime LastPingDate { get; set; }
 }
 ```
+
+## Visual Studio invalid certificate on localhost
+
+Some helpful commands for redoing the localhost certificate flow in .net core
+from here [Docs](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-dev-certs)
+
+Package manager console
+
+```bash
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+dotnet dev-certs https --check
+```
+
+Microsoft edge still saying certificate error when making the HTTP requests
+
+- [ ] Open this URL in edge://flags
+- [ ] Search localhost
+- [ ] Enable - allow invalid certificates for resources loaded from localhost
+- [ ] Restart Edge
