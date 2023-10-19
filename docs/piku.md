@@ -160,6 +160,8 @@ Commands:
 
 ```
 
+### Nginx override. Redirect to https
+
 Override nginx to add a www. redirect to https
 
 ```bash
@@ -185,3 +187,8 @@ Test and Reload nginx
 nginx -t
 nginx -s reload
 ```
+
+### DNS entries for piku sites
+
+A Record @ serverip
+A Record www serverip
