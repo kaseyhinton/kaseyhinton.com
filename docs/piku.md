@@ -159,3 +159,29 @@ Commands:
   update            Update the piku cli
 
 ```
+
+Override nginx to add a www. redirect to https
+
+```bash
+nano /home/piku/.piku/nginx/mysite.conf
+```
+
+```
+server {
+        listen 80;
+        server_name www.mysite.com;
+        return 301 $scheme://mysite.com$request_uri;
+}
+
+server {
+        listen 80;
+        server_name domain.example;
+}
+```
+
+Test and Reload nginx
+
+```bash
+nginx -t
+nginx -s reload
+```
