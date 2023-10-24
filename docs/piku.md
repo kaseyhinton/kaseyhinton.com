@@ -160,7 +160,23 @@ Commands:
 
 ```
 
-### Nginx override. Redirect to https
+### Out of memory - NPM install
+
+Log into the server and set 
+```
+export NODE_OPTIONS=--max_old_space_size=2048
+```
+
+Where 2048 is the installed memory on the server. You maybe need to increase the server resources for this.
+
+### www redirect to https (Do this instead of the override below)
+
+In ENV
+```
+NGINX_SERVER_NAME=mysite.com  www.mysite.com
+```
+
+### Nginx override. Redirect to https (Don't do this)
 
 Override nginx to add a www. redirect to https
 
