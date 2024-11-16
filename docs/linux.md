@@ -39,7 +39,6 @@ Command Line
 - git
 - neofetch
 - curl
-- htop (resource management)
 - Parcellite (clipboard)
 - micro (text editor)
 - chromium (browser)
@@ -80,7 +79,6 @@ Command Line
 
 ### i3
 
-
 ##### Common key commands
 
 - `MOD+Arrow` (Switch Window)
@@ -89,3 +87,4 @@ Command Line
 - `MOD+SHIFT+Q` (Kill Window)
 - `MOD+D` (Launch DMENU)
 - `MOD+1` (Change Workspace)
+- `MOD+SHIFT+R` (Reload config) (~/.config/i3/config)
