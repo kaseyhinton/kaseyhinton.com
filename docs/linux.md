@@ -45,7 +45,7 @@ Command Line
 
 ##### Add gaps
 - `sudo vpm install i3-gaps`
-- `sudo nvim ~/config/i3/config`
+- `sudo nvim ~/.config/i3/config`
 ```
 # Define gaps between windows
 gaps inner 24

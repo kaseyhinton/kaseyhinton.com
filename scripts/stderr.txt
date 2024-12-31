@@ -1,0 +1,1 @@
+./bhb-1.sh: line 90: lzl: command not found
