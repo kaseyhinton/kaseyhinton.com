@@ -1,1 +1,1 @@
-web: docsify serve docs --port $PORT
+web: npm start
