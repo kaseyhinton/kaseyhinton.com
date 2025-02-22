@@ -11,7 +11,6 @@
 - `pkill :process` (Kill processes by name)
 - `jobs` (Display currently running jobs)
 
-
 ### chmod
 
 script.sh
@@ -30,9 +29,11 @@ Command Line
 ### Void Linux
 
 #### View local docs
+
 - `void-docs`
 
 #### Set up with i3
+
 - `sudo xbps-install -Su`
 - `sudo xbps-install vpm`
 - `sudo vpm install void-repo-nonfree`
@@ -41,18 +42,21 @@ Command Line
 - `startx`
 
 ##### Modify config file
+
 - `echo "parcellite" >> ~/.configs/i3/config` (autostart clipboard manager)
 
 ##### Add gaps
+
 - `sudo vpm install i3-gaps`
 - `sudo nvim ~/.config/i3/config`
+
 ```
 # Define gaps between windows
 gaps inner 24
 ```
 
-
 #### Packages
+
 - vpm - predictable package management
 - git
 - neofetch
@@ -87,16 +91,18 @@ gaps inner 24
 `vpm query -m`
 
 ##### Remove orphan packages
+
 `vpm remove --remove-orphans`
 
 ##### Common query options
+
 `vpm query -x git` (show package dependencies)
 `vpm query -f git` (show package files)
 `vpm query -S git` (show package information)
 `vpm query -x git` (show package dependencies)
 
-
 #### Void Services
+
 `ls /var/services` (List all the services)
 `sudo sv status /var/service/*` (list all the service statuses/pids)
 `sudo ln -s /etc/sv/alsa /var/service` (Add a service)
@@ -111,6 +117,7 @@ gaps inner 24
 - `cat /proc/asound/modules` (list sound modules)
 - `nvim ~/.asoundrc` (Set default sound module - per user)
 - `nvim /etc/asound.conf` (Set default sound module - globally)
+
 ```
 defaults.ctl.card 2;
 defaults.pcm.card 2;
@@ -119,13 +126,14 @@ defaults.pcm.card 2;
 ###### Plugins
 
 ####### APULSE
+
 - `sudo vpm install apulse` (install pulse audio emulation for ALSA)
 
 ####### ALSA-UTILS (optional)
 Persist volume settings
+
 - `sudo vpm install alsa-utils` (install util pkg for service setup)
 - `sudo ln -s /etc/sv/alsa /var/service` (link and start service)
-
 
 ##### PulseAudio
 
@@ -133,16 +141,33 @@ Persist volume settings
 - `sudo vpm install alsa-plugins-pulseaudio` (install alsa support for pulse audio)
 
 #### WiFi Setup
+
 ```
 wpa_cli
 scan
 scan_results
 add_network
 set_network 0 ssid "my_ssid"
-set_network 0 ksd "my_password"
+set_network 0 psk "my_password"
 enable_network 0
 save config
 ```
+
+###### WiFi Troubleshooting
+
+You can try deleting the wpa_supplicant service/files/etc
+and reinstalling with `vpm install wpa_supplicant -f` which will reinstall it
+
+run `ip link` to see what interface are available
+
+After an update a different wireless interface appeared
+for me that I needed to switch to.
+
+```
+sudo wpa_supplicant -B -i wlo1 -c /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+After deleting my old wpa_supplicant config, re-installing, and re-initializing wpa_supplicant with the new interface I was able to follow the wpa_cli instructions above to make a new connection.
 
 ### i3
 
@@ -161,7 +186,7 @@ save config
 - `MOD+SHIFT+Arrow` (Move window)
 - `MOD+F` (Toggle Fullscreen)
 
-
 ### Set Background Wallpaper
+
 - `sudo vpm install feh`
 - `feh --bg-scale ~/Pictures/wallpaper.jpeg`
