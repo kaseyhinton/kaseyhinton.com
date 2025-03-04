@@ -10,6 +10,7 @@
 - `kill :pid` (Kill process)
 - `pkill :process` (Kill processes by name)
 - `jobs` (Display currently running jobs)
+- `fg` (Bring job into the foreground to Ctrl+c)
 
 ### chmod
 
