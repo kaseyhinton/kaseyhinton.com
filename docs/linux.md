@@ -190,3 +190,10 @@ After deleting my old wpa_supplicant config, re-installing, and re-initializing 
 
 - `sudo vpm install feh`
 - `feh --bg-scale ~/Pictures/wallpaper.jpeg`
+
+### Use OpenVPN on void linux
+
+- Download VPN configuration file from vpn provider
+- `sudo vpm install openvpn openresolv`
+- `sudo nvim ./openvpnconf.ovpn` Change /etc/resolv.conf -> /usr/bin/resolvconf
+- `sudo openvpn --config ./openvpnconf.ovpn`

@@ -16,19 +16,21 @@ git switch <branch> (Switch to a new branch)
 
 git push -u origin <branch>
 
-
 ### Branch
 
 ##### Searching by pattern
+
 git branch --list <pattern> (List branches matching a pattern)
-git branch --list "feature/*"
+git branch --list "feature/\*"
 
 ##### Browsing local and remote branches
+
 git branch (List all local)
 
 git branch -r (List all remotes)
 
-git branch -a (List all local and remotes) 
+git branch -a (List all local and remotes)
 
+### Remove origin
 
-
+git remote remove dokku
