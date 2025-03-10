@@ -198,3 +198,51 @@ After deleting my old wpa_supplicant config, re-installing, and re-initializing 
 - `sudo vpm install openvpn openresolv`
 - `sudo nvim ./openvpnconf.ovpn` Change /etc/resolv.conf -> /usr/bin/resolvconf
 - `sudo openvpn --config ./openvpnconf.ovpn`
+
+
+### Webmin and Nginx setup on Alpine linux
+
+```
+apk update
+apk upgrade
+
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 22/ssh
+sudo ufw allow 10000
+
+apk add neovim perl perl-net-ssleay perl-html-parser nginx certbot certbot-nginx
+
+
+cd /opt
+wget -O - https://www.webmin/download/webmin-current.tar.gz | tar -xzf -
+mv webmin-2.302 webmin
+cd webmin
+./setup.sh /usr/local/webmin
+```
+
+Config file directory [/etc/webmin]: enter
+Log file directory [/var/webmin]: /var/log/webmin
+Full path to perl: enter
+Operating system: 84 // 84 must be Gentoo
+Version: ES4.0
+Web server port (default 10000): enter (or other port number)
+Login name (default admin): admin
+Login password: admin-password
+Password again: admin-password
+Use SSL (y/n): n
+Start Webmin at boot time (y/n): y
+
+```
+
+sudo mkdir -p /etc/nginx/sites-available
+sudo mkdir -p /etc/nginx/sites-enabled
+sudo nvim /etc/nginx/nginx.conf
+```
+
+Add
+`include /etc/nginx/sites-enabled/*; `
+
+```
+sudo certbox --nginx -d mydomain.com www.mydomain.com
+```
