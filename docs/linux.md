@@ -95,6 +95,10 @@ gaps inner 24
 
 `vpm remove --remove-orphans`
 
+##### Remove outdated packages from cache
+
+`vpm remove --clean-cache`
+
 ##### Common query options
 
 `vpm query -x git` (show package dependencies)
