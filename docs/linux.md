@@ -197,3 +197,49 @@ After deleting my old wpa_supplicant config, re-installing, and re-initializing 
 - `sudo vpm install openvpn openresolv`
 - `sudo nvim ./openvpnconf.ovpn` Change /etc/resolv.conf -> /usr/bin/resolvconf
 - `sudo openvpn --config ./openvpnconf.ovpn`
+
+### Full package list
+
+- alacritty-0.15.1_1
+- alsa-plugins-pulseaudio-1.2.12_2
+- base-system-0.114_2
+- chromium-138.0.7204.92_1
+- chrony-4.7_1
+- cryptsetup-2.7.5_2
+- curl-8.14.1_1
+- dbus-1.16.2_2
+- dmenu-5.3_1
+- feh-3.10.3_1
+- fff-2.2_1
+- git-2.50.0_1
+- go-1.24.4_1
+- grub-i386-efi-2.12_2
+- grub-x86_64-efi-2.12_2
+- i3-4.24_1
+- i3-gaps-4.24_1
+- i3status-2.15_1
+- j4-dmenu-desktop-3.2_1
+- lazygit-0.52.0_1
+- lightdm-1.32.0_7
+- lightdm-gtk3-greeter-2.0.9_1
+- lvm2-2.03.29_1
+- mdadm-4.3_4
+- neovim-0.11.2_1
+- nmap-7.95_3
+- nodejs-22.15.0_2
+- nvidia-570.169_1
+- openresolv-3.17.0_1
+- openvpn-2.6.14_1
+- polybar-3.7.2_2
+- pulseaudio-16.1_2
+- unzip-6.0_15
+- void-docs-browse-2025.01.25_1
+- void-live-audio-0.1.1_1
+- void-repo-multilib-6_4
+- void-repo-multilib-nonfree-6_4
+- void-repo-nonfree-9_6
+- vpm-1.3_3
+- vscode-1.100.2_1
+- xdg-utils-1.2.1_1
+- xmirror-0.4.1_1
+- xorg-7.6_6
