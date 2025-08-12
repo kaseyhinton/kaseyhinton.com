@@ -1,1 +1,0 @@
-web: docsify serve docs --port $PORT
