@@ -247,7 +247,7 @@ Add
 `include /etc/nginx/sites-enabled/*; `
 
 ```
-sudo certbox --nginx -d mydomain.com www.mydomain.com
+sudo certbot --nginx -d mydomain.com www.mydomain.com
 ```
 
 ### Full package list
