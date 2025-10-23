@@ -459,7 +459,7 @@ sudo apk add docker-compose
 
 # Verify installation
 docker --version
-docker-compose --version
+docker compose --version
 ```
 
 #### Step 3: Firewall Setup
