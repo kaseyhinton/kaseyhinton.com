@@ -213,18 +213,25 @@ sudo vpm install void-repo-nonfree
 sudo vpm install xorg xterm i3 dmenu vis
 
 #Additional packages
-sudo vpm install mesa-vulcan-nouveau vscode i3-gaps feh firefox bash-completion curl git
+sudo vpm install mesa-vulcan-nouveau vscode i3-gaps feh firefox bash-completion curl git unzip
 ```
 
-# Change default shell
-
 ```bash
+# Change default shell
 sudo chsh -s /bin/bash
 ```
 
-launch system with this
+```bash
+# Install Bun
+curl -fsSL https://bun.sh/install | bash
+
+# Update .bashrc
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+```
 
 ```bash
+# Start xorg & i3
 startx
 ```
 
@@ -291,17 +298,15 @@ bar {
     urgent_workspace   $base  $red      $crust
   }
 }
-
 ```
 
+## Automated setup script
 
-## Setup script
 ```bash
 curl void-setup.sh
 chmod +x void-setup.sh
 ./void-setup.sh
 ```
-
 
 ```bash
 #!/bin/bash
@@ -330,30 +335,76 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 # Update and install base packages
-echo -e "\n${GREEN}[1/7] Updating system and installing base packages...${NC}"
+echo -e "\n${GREEN}[1/8] Updating system and installing base packages...${NC}"
 sudo xbps-install -Syu
 sudo xbps-install -S vpm
 sudo vpm install void-repo-nonfree
 
 # Install Xorg and window manager
-echo -e "\n${GREEN}[2/7] Installing Xorg and window manager...${NC}"
+echo -e "\n${GREEN}[2/8] Installing Xorg and window manager...${NC}"
 sudo vpm install xorg xterm i3 i3-gaps dmenu vis mesa-vulcan-nouveau
 
 # Install additional packages
-echo -e "\n${GREEN}[3/7] Installing additional packages...${NC}"
-sudo vpm install vscode feh firefox bash-completion curl git
+echo -e "\n${GREEN}[3/8] Installing additional packages...${NC}"
+sudo vpm install vscode feh firefox bash-completion curl git unzip
+
+# Install bun (JavaScript runtime)
+echo -e "\n${GREEN}[4/8] Installing bun (JavaScript runtime)...${NC}"
+if command -v curl &> /dev/null; then
+    curl -fsSL https://bun.sh/install | bash
+    echo -e "${GREEN}bun installed successfully!${NC}"
+
+    # Add bun to PATH for current session
+    if [ -f "$HOME/.bun/bin/bun" ]; then
+        export BUN_INSTALL="$HOME/.bun"
+        export PATH="$BUN_INSTALL/bin:$PATH"
+        echo -e "${YELLOW}bun has been added to PATH for this session${NC}"
+    fi
+else
+    echo -e "${YELLOW}curl not found, installing curl first...${NC}"
+    sudo vpm install curl
+    curl -fsSL https://bun.sh/install | bash
+    echo -e "${GREEN}bun installed successfully!${NC}"
+fi
+
+# Add bun to shell startup files
+echo -e "\n${GREEN}[5/8] Adding bun to shell startup files...${NC}"
+if [ -f "$HOME/.bashrc" ]; then
+    if ! grep -q "BUN_INSTALL" "$HOME/.bashrc"; then
+        echo '' >> ~/.bashrc
+        echo '# bun completions' >> ~/.bashrc
+        echo '[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"' >> ~/.bashrc
+        echo '' >> ~/.bashrc
+        echo '# bun' >> ~/.bashrc
+        echo 'export BUN_INSTALL="$HOME/.bun"' >> ~/.bashrc
+        echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> ~/.bashrc
+        echo -e "${GREEN}Added bun to ~/.bashrc${NC}"
+    else
+        echo -e "${YELLOW}bun already configured in ~/.bashrc${NC}"
+    fi
+fi
+
+if [ -f "$HOME/.profile" ]; then
+    if ! grep -q "BUN_INSTALL" "$HOME/.profile"; then
+        echo '' >> ~/.profile
+        echo '# bun' >> ~/.profile
+        echo 'export BUN_INSTALL="$HOME/.bun"' >> ~/.profile
+        echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> ~/.profile
+        echo -e "${GREEN}Added bun to ~/.profile${NC}"
+    fi
+fi
 
 # Change default shell to bash
-echo -e "\n${GREEN}[4/7] Changing default shell to bash...${NC}"
+echo -e "\n${GREEN}[6/8] Changing default shell to bash...${NC}"
 sudo chsh -s /bin/bash $(whoami)
 
 # Create necessary directories
-echo -e "\n${GREEN}[5/7] Creating configuration directories...${NC}"
+echo -e "\n${GREEN}[7/8] Creating configuration directories...${NC}"
 mkdir -p ~/.config/i3
 mkdir -p ~/Downloads
 
 # Download Catppuccin Void wallpaper
-echo -e "\n${GREEN}[6/7] Downloading Catppuccin Void wallpaper...${NC}"
+echo -e "\n${GREEN}[8/8] Downloading Catppuccin Void wallpaper...${NC}"
 WALLPAPER_URL="https://github.com/zhichaoh/catppuccin-wallpapers/raw/main/os/void-magenta-blue-1920x1080.png"
 WALLPAPER_PATH="$HOME/Downloads/bg.png"
 
@@ -383,7 +434,7 @@ if [ ! -f "$WALLPAPER_PATH" ]; then
 fi
 
 # Create .xinitrc
-echo -e "\n${GREEN}[7/7] Creating .xinitrc and i3 config...${NC}"
+echo -e "\n${GREEN}Creating .xinitrc and i3 config...${NC}"
 cat > ~/.xinitrc << 'EOF'
 #!/bin/sh
 
@@ -472,6 +523,9 @@ bindsym $mod+Shift+f exec firefox
 # Launch VSCode
 bindsym $mod+Shift+v exec code
 
+# Launch terminal with bun
+bindsym $mod+Shift+b exec xterm -bg "#303446" -fg "#c6d0f5" -cr "#99d1db" -bd "#303446" -ms "#99d1db" -e "bash -c 'bun --version; echo; bash'"
+
 # Screenshot (requires scrot - install with: vpm install scrot)
 # bindsym $mod+s exec scrot '%Y-%m-%d-%H%M%S_$wx$h.png' -e 'mv $f ~/Downloads/'
 
@@ -514,9 +568,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Workspaces
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
+set $ws1 "1: www"
+set $ws2 "2: code"
+set $ws3 "3: term"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -565,7 +619,7 @@ mode "resize" {
     bindsym j resize grow height 10 px or 10 ppt
     bindsym k resize shrink height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
-    
+
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -597,20 +651,63 @@ bar {
         inactive_workspace $base  $base     $text
         urgent_workspace   $base  $red      $crust
     }
-    
+
     # Show workspace numbers
     workspace_buttons yes
-    
+
     # Disable workspace names, just show numbers
     strip_workspace_numbers no
-    
+
     # Status command (uncomment to enable i3status)
     # status_command i3status
-    
+
     # Custom status command example:
     # status_command while true; do echo "$(date '+%Y-%m-%d %H:%M:%S')"; sleep 1; done
 }
 EOF
+
+# Create a simple bun test script
+echo -e "\n${GREEN}Creating bun test script...${NC}"
+cat > ~/test-bun.js << 'EOF'
+// Simple bun test script
+console.log("✅ bun is working correctly!");
+console.log(`Version: ${Bun.version}`);
+console.log(`Platform: ${process.platform}`);
+console.log(`Arch: ${process.arch}`);
+
+// Test some bun features
+const array = [1, 2, 3, 4, 5];
+const sum = array.reduce((a, b) => a + b, 0);
+console.log(`Sum of ${array} = ${sum}`);
+
+// Test file reading (if we have a file to read)
+try {
+  const packageJson = await Bun.file("./package.json").json().catch(() => null);
+  if (packageJson) {
+    console.log(`Project: ${packageJson.name || 'Unknown'}`);
+  }
+} catch {
+  // Ignore if no package.json
+}
+
+console.log("\n🚀 bun is ready to use!");
+EOF
+
+# Test bun installation
+echo -e "\n${GREEN}Testing bun installation...${NC}"
+if [ -f "$HOME/.bun/bin/bun" ]; then
+    "$HOME/.bun/bin/bun" --version && \
+    echo -e "${GREEN}✅ bun is installed and working!${NC}" || \
+    echo -e "${YELLOW}⚠️ bun installed but version check failed${NC}"
+
+    # Run test script
+    echo -e "\n${YELLOW}Running bun test script...${NC}"
+    "$HOME/.bun/bin/bun" run ~/test-bun.js
+else
+    echo -e "${YELLOW}⚠️ bun installation may have failed${NC}"
+    echo -e "${YELLOW}You can install it manually with:${NC}"
+    echo -e "${BLUE}curl -fsSL https://bun.sh/install | bash${NC}"
+fi
 
 echo -e "\n${GREEN}========================================${NC}"
 echo -e "${GREEN}  Setup Complete!${NC}"
@@ -618,19 +715,27 @@ echo -e "${GREEN}========================================${NC}"
 echo -e "\n${YELLOW}Summary of what was installed:${NC}"
 echo -e "• Base system updates and non-free repos"
 echo -e "• Xorg, i3-gaps, dmenu, xterm"
+echo -e "• bun (JavaScript runtime) with auto-completion"
+echo -e "• unzip utility"
 echo -e "• Catppuccin Void wallpaper"
 echo -e "• Firefox, VSCode, git, curl"
 echo -e "• i3 config with matching Catppuccin colors"
+echo -e "\n${YELLOW}Key Features:${NC}"
+echo -e "• ${BLUE}Super+Shift+b${NC} - Open terminal with bun"
+echo -e "• Workspace labels (1: www, 2: code, 3: term)"
+echo -e "• bun added to PATH in ~/.bashrc and ~/.profile"
 echo -e "\n${YELLOW}Next steps:${NC}"
-echo -e "1. Log out and log back in to apply shell change"
+echo -e "1. Log out and log back in to apply shell change and bun PATH"
 echo -e "2. Run ${BLUE}startx${NC} to start the graphical environment"
+echo -e "3. Test bun with ${BLUE}bun --version${NC}"
 echo -e "\n${YELLOW}Optional packages you might want:${NC}"
 echo -e "• Screenshot: ${BLUE}sudo vpm install scrot${NC}"
 echo -e "• Screen lock: ${BLUE}sudo vpm install i3lock${NC}"
 echo -e "• Volume control: ${BLUE}sudo vpm install alsa-utils${NC}"
 echo -e "• Brightness control: ${BLUE}sudo vpm install acpilight${NC}"
-echo -e "\n${YELLOW}Customization:${NC}"
-echo -e "- Wallpaper: ${BLUE}~/Downloads/bg.png${NC}"
-echo -e "- i3 config: ${BLUE}~/.config/i3/config${NC}"
-echo -e "- Edit keybindings in the config file"
+echo -e "\n${YELLOW}Useful bun commands:${NC}"
+echo -e "• Create project: ${BLUE}bun create react-app my-app${NC}"
+echo -e "• Run script: ${BLUE}bun run file.js${NC}"
+echo -e "• Install package: ${BLUE}bun add package-name${NC}"
+echo -e "• Start dev server: ${BLUE}bun dev${NC}"
 ```
