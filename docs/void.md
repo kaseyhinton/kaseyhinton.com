@@ -245,6 +245,10 @@ exec i3
 
 ```bash
 # i3 config ~/.config/i3/config
+# Comment that status bar out
+# bar {
+#  command i3status
+# }
 xterm -bg "#303446" -fg "#c6d0f5" -cr "#99d1db" -bd "#303446" -ms "#99d1db"
 dmenu -nb "#c6d0f5" -nf "#303446" -sb "#303446" -sf "#99d1db"
 gaps inner 12
