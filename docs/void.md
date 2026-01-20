@@ -314,16 +314,20 @@ bar {
 
 ### /usr/share/vis/visrc.lua
 ```lua
--- load standard vis module, providing parts of the Lua API
-require('vis')
+ -- load standard vis module, providing parts of the Lua API
+   require('vis')
+    
+   vis.events.subscribe(vis.events.INIT, function()
+       -- Your global configuration options
+   end)
+    
+  vis.events.subscribe(vis.events.WIN_OPEN, function(win) -- luacheck: no unused args
+      vis:command('set theme almostnord')
+      vis:command('set tabwidth 4')
+      vis:command('set number on')
+      vis:command('set ignorecase on')
+      -- Your per window configuration options e.g.
+      -- vis:command('set number')
+  end) 
 
-vis.events.subscribe(vis.events.INIT, function()
-        -- Your global configuration options
-end)
-
-vis.events.subscribe(vis.events.WIN_OPEN, function(win) -- luacheck: no unused args
-        vis:command('set theme almostnord')
-        -- Your per window configuration options e.g.
-        -- vis:command('set number')
-end)
 ```
