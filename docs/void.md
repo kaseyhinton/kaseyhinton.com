@@ -213,7 +213,7 @@ sudo vpm install void-repo-nonfree
 sudo vpm install xorg xterm i3 dmenu vis
 
 #Additional packages
-sudo vpm install mesa-vulcan-nouveau vscode i3-gaps feh firefox bash-completion curl git unzip font-firacode
+sudo vpm install mesa-vulcan-nouveau vscode i3-gaps feh firefox bash-completion curl git unzip font-firacode github-cli
 ```
 
 ```bash
