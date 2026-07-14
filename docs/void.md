@@ -213,7 +213,7 @@ sudo vpm install void-repo-nonfree
 sudo vpm install xorg xterm i3 dmenu vis
 
 #Additional packages
-sudo vpm install mesa-vulcan-nouveau vscode i3-gaps feh firefox bash-completion curl git unzip
+sudo vpm install mesa-vulcan-nouveau vscode i3-gaps feh firefox bash-completion curl git unzip font-firacode
 ```
 
 ```bash
@@ -249,7 +249,7 @@ exec i3
 # bar {
 #  command i3status
 # }
-xterm -bg "#303446" -fg "#c6d0f5" -cr "#99d1db" -bd "#303446" -ms "#99d1db"
+xterm -bg "#303446" -fg "#c6d0f5" -cr "#99d1db" -bd "#303446" -ms "#99d1db" -fa 'Fira Code' -fs 16
 dmenu -nb "#c6d0f5" -nf "#303446" -sb "#303446" -sf "#99d1db"
 gaps inner 12
 
@@ -331,3 +331,28 @@ bar {
   end) 
 
 ```
+
+### Remove annoying system beep in terminal
+```bash
+sudo rmmod pcspkr #current session
+echo "blacklist pcspkr" | sudo tee /etc/modprobe.d/nobeep.conf #subsequent reboots
+```
+
+### Install golang apps
+```bash
+go install github.com/maaslalani/sheets@main
+```
+
+#### Make available to path
+```bash
+# ~/.bashrc
+
+# Set GOPATH and include its bin directory in PATH
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# Include system Go installation binaries if you installed Go via xbps
+export PATH="$PATH:/home/kasey/go/bin"
+
+```
+
