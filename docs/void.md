@@ -356,3 +356,9 @@ export PATH="$PATH:/home/kasey/go/bin"
 
 ```
 
+### Github CLI
+
+```bash
+gh auth login
+sudo chown -R $USER:$USER .git/
+```
