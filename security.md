@@ -66,7 +66,7 @@ docker rm psec1 // remove container
 ping <ip>
 
 # Pinging [ip] with 32 bytes of data:
-# Reply from <ip>: bytes=32 time=25ms TTL=(128 for windows, 64 for windows)
+# Reply from <ip>: bytes=32 time=25ms TTL=(128 for windows, 64 for linux)
 ```
 
 ###### Nmap 
@@ -77,7 +77,7 @@ ping <ip>
 # -Pn skip host discovery
 # -oA output in three major formats
 # -sn ping scan
-# -A aggresive
+# -A aggressive
 nmap -sC -sV -A -Pn <ip>
 ```
 
@@ -243,7 +243,7 @@ DigiKeyboard.sendKeyStroke(KEY_F); // Fullscreen video
 
 ##### Resources
 
-- [hacktricks](book.hacktricks.xyz)
+- [hacktricks](https://book.hacktricks.xyz)
 - [intruder payloads](https://github.com/1N3/IntruderPayloads)
 - [url masker](https://github.com/jaykali/maskphish)
 - [mgeeky pentest tools](https://github.com/mgeeky/Penetration-Testing-Tools)

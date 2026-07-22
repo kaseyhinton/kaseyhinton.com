@@ -17,7 +17,7 @@ curl https://piku.github.io/get | sh
 ##### Configure SSH
 
 After generating your private key via the `ssh-keygen` (name the file id_rsa in the C:/Users/username/.ssh directory) command
-if you open the private key and it says OPEN-SSH instead of RSA you need to convert it via this command.
+if you open the private key and it says OPENSSH instead of RSA you need to convert it via this command.
 
 ```bash
 ssh-keygen -p -m PEM -f ~/.ssh/id_rsa

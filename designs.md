@@ -1,4 +1,4 @@
-# Links
+# Designs
 
 [Linglee Language Learning](https://dribbble.com/shots/7052720-Linglee-Languages-learning-platform)
 

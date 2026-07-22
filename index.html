@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content="Knowledge archive and resume" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-    />
+    <link rel="stylesheet" href="./pico.css" />
     <title>kaseyhinton.com</title>
 
     <style>
@@ -100,6 +97,25 @@
 
       pre {
         margin-top: var(--pico-spacing);
+      }
+
+      loading-veil {
+        position: fixed;
+        inset: 0;
+        top: 10px;
+        background-color: color-mix(
+          in srgb,
+          var(--pico-background-color) 80%,
+          transparent
+        );
+        backdrop-filter: blur(2px);
+        display: grid;
+        place-items: center;
+        z-index: 9999;
+      }
+
+      loading-veil[hidden] {
+        display: none;
       }
     </style>
   </head>
@@ -323,6 +339,7 @@
       <main>
         <article>${state.content}</article>
       </main>
+      <loading-veil ${state.isLoading ? "" : "hidden"}></loading-veil>
     `;
 
     function rerender() {

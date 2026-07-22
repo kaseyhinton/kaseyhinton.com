@@ -19,14 +19,14 @@ apk upgrade
 
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
-sudo ufw allow 22/ssh
+sudo ufw allow 22/tcp
 sudo ufw allow 10000
 
 apk add neovim perl perl-net-ssleay perl-html-parser nginx certbot certbot-nginx
 
 
 cd /opt
-wget -O - https://www.webmin/download/webmin-current.tar.gz | tar -xzf -
+wget -O - https://www.webmin.com/download/webmin-current.tar.gz | tar -xzf -
 mv webmin-2.302 webmin
 cd webmin
 ./setup.sh /usr/local/webmin
@@ -121,12 +121,12 @@ sudo rc-service my-backend status
 sudo install -m 0755 -o root -g root /root/.bun/bin/bun /usr/local/bin/bun
 sudo rm -f /usr/bin/bun  # remove any bad symlink
 
-# 3) Sanity check as the service user
+# 2) Sanity check as the service user
 sudo -u nobody /usr/local/bin/bun --version
 
-# 4) Restart service and verify
-sudo rc-service hftv-backend start
-sudo rc-service hftv-backend status
+# 3) Restart service and verify
+sudo rc-service my-backend start
+sudo rc-service my-backend status
 curl -sS http://127.0.0.1:3002/health
 ```
 

@@ -31,7 +31,7 @@ docker --version
 docker compose --version
 ```
 
-##### Firewall Setup useing iptables
+##### Firewall Setup using iptables
 ```bash
 # Install iptables if not present
 sudo apk add iptables

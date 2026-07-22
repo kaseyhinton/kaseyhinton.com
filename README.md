@@ -44,7 +44,7 @@ Works as a full-stack senior software engineer on a production team building pro
 ---
 
 ## Education
-`Western Governors University — B.S. Software Development` 
+`Western Governors University — B.S. Software Development`
 <br />
 
 `Southern Utah University — A.S.`
@@ -53,8 +53,7 @@ Works as a full-stack senior software engineer on a production team building pro
 - Certified ScrumMaster (CSM)
 - CompTIA Project+
 - CompTIA A+
-- Udacity React 
-- Nanodegree
-- CIW Site Development Associate 
-- ITIL v4 
+- Udacity React Nanodegree
+- CIW Site Development Associate
+- ITIL v4
 - Google Cybersecurity Professional Certificate

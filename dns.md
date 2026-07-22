@@ -2,7 +2,7 @@
 
 ##### Dynamic DNS with Cloudflare
 
-My example was on ubuntu 22 which ships with ddclient 3.9 so its likely easier with the newer version that ships on 24
+My example was on Ubuntu 22 which ships with ddclient 3.9, so it's likely easier with the newer version that ships on 24
 
 Create a DNS record for the domain you are using
 Type: A

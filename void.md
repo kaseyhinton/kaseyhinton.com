@@ -32,7 +32,7 @@ Command Line
 
 ##### Modify config file
 
-- `echo "parcellite" >> ~/.configs/i3/config` (autostart clipboard manager)
+- `echo "parcellite" >> ~/.config/i3/config` (autostart clipboard manager)
 
 ##### Add gaps
 
@@ -92,14 +92,12 @@ gaps inner 24
 `vpm query -x git` (show package dependencies)
 `vpm query -f git` (show package files)
 `vpm query -S git` (show package information)
-`vpm query -x git` (show package dependencies)
 
 #### Void Services
 
 `ls /var/services` (List all the services)
 `sudo sv status /var/service/*` (list all the service statuses/pids)
 `sudo ln -s /etc/sv/alsa /var/service` (Add a service)
-``
 
 #### Audio Setup
 
@@ -191,12 +189,11 @@ After deleting my old wpa_supplicant config, re-installing, and re-initializing 
 - `sudo nvim ./openvpnconf.ovpn` Change /etc/resolv.conf -> /usr/bin/resolvconf
 - `sudo openvpn --config ./openvpnconf.ovpn`
 
-  }
-  }
+### Helpful permission script
 
-# Helpful permission script
-
+```bash
 sudo chown -R username:username /path/to/directory
+```
 
 ## 2026 Updated Void Fresh Install Guide
 
@@ -213,7 +210,7 @@ sudo vpm install void-repo-nonfree
 sudo vpm install xorg xterm i3 dmenu vis
 
 #Additional packages
-sudo vpm install mesa-vulcan-nouveau vscode i3-gaps feh firefox bash-completion curl git unzip font-firacode github-cli
+sudo vpm install mesa-vulkan-nouveau vscode i3-gaps feh firefox bash-completion curl git unzip font-firacode github-cli
 ```
 
 ```bash
