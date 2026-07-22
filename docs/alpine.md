@@ -1,24 +1,18 @@
 # Alpine
 
-### Complete Setup Guide: Cryptgeon with Caddy on Alpine Linux
-#### Prerequisites
+##### Complete Setup Guide: Cryptgeon with Caddy on Alpine Linux
+##### Prerequisites
 - Fresh Alpine Linux VPS/VM
-
 - Root or sudo access
-
 - Domain name pointed to your server IP
 
-
-#### Step 1: Initial Alpine Linux Setup
-##### Update the system
+##### Update the Alpine Linux system
 ```bash
 # Update package list and upgrade system
 apk update && apk upgrade
 ```
 
-
-#### Step 2: Install Docker & Docker Compose
-##### Install Docker
+##### Install Docker & Docker Compose
 ```bash
 # Install Docker
 sudo apk add docker
@@ -28,7 +22,6 @@ sudo rc-service docker start
 sudo rc-update add docker boot
 ```
 
-##### Install Docker Compose
 ```bash
 # Install docker-compose
 sudo apk add docker-compose
@@ -38,8 +31,7 @@ docker --version
 docker compose --version
 ```
 
-#### Step 3: Firewall Setup
-##### Alpine uses iptables by default. Here's how to set it up:
+##### Firewall Setup useing iptables
 ```bash
 # Install iptables if not present
 sudo apk add iptables
@@ -69,7 +61,7 @@ sudo rc-service iptables save
 sudo rc-update add iptables
 ```
 
-#### UFW setup
+##### UFW setup
 ```bash
 # Allow HTTP and HTTPS
 sudo ufw allow 80/tcp
@@ -79,13 +71,12 @@ sudo ufw allow 443/tcp
 sudo ufw status verbose
 ```
 
-#### Step 4: Create Project Directory
+##### Create Project Directory
 ```bash
 # Create project directory
 mkdir ~/cryptgeon && cd ~/cryptgeon
 ```
 
-#### Step 5: Create Docker Compose File
 ##### Create docker-compose.yml:
 ```yaml
 version: '3.8'
@@ -132,7 +123,6 @@ volumes:
   caddy_config:
 ```
 
-#### Step 6: Create Caddyfile
 ##### Create Caddyfile (no extension):
 ```text
 myapp.com {
@@ -149,7 +139,7 @@ myapp.com {
 }
 ```
 
-#### Step 7: Deploy the Application
+##### Deploy the Application
 ```bash
 # Deploy the stack
 docker compose up -d
@@ -161,15 +151,13 @@ docker compose ps
 docker compose logs -f
 ```
 
-#### Step 8: Verify Installation
-
-##### Check services are running
+##### Verify services are running
 ```bash
 docker compose ps
 ```
 
 
-#### Step 9: Maintenance Commands
+##### Maintenance Commands
 
 ```bash
 # Stop the application
@@ -189,7 +177,4 @@ docker compose logs
 # Specific service
 docker compose logs caddy
 docker compose logs app
-
-
-
 ```

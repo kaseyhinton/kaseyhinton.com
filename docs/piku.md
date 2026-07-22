@@ -1,12 +1,12 @@
 # Piku PaaS Setup
 
-### Helpful Links
+##### Helpful Links
 
 [Piku Github Page](https://github.com/piku/piku)
 
 [Youtube Video by Chris McCormick](https://www.youtube.com/watch?v=ec-GoDukHWk)
 
-### Configure New VPS
+##### Configure New VPS
 
 ```bash
 ssh root@myserverip
@@ -14,7 +14,7 @@ curl https://piku.github.io/get | sh
 ./piku-bootstrap install
 ```
 
-### Configure SSH
+##### Configure SSH
 
 After generating your private key via the `ssh-keygen` (name the file id_rsa in the C:/Users/username/.ssh directory) command
 if you open the private key and it says OPEN-SSH instead of RSA you need to convert it via this command.
@@ -34,7 +34,7 @@ sudo su - piku
 python3 piku.py setup:ssh /tmp/id_rsa.pub
 ```
 
-### Configure Domain Records
+##### Configure Domain Records
 
 A Record
 
@@ -54,7 +54,7 @@ TTL: 3600
 Data: myserverip
 ```
 
-### Additional Project Files
+##### Additional Project Files
 
 These are files that will be added to the root of your web application or service.
 
@@ -90,14 +90,14 @@ app.listen(port, () => {
 });
 ```
 
-### Publishing
+##### Publishing
 
 ```bash
 git remote add piku piku@myserverip:myappname
 git push piku main
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 if you have trouble provisioning a certificate with a timeout error ensure the firewall rules are allowing traffic to port 80
 
@@ -111,7 +111,7 @@ if you have everything set up but cannot see your deployed application on your c
 sudo ufw allow "Nginx FULL"
 ```
 
-### Useful commands
+##### Useful commands
 
 To find the files actually under the hood that Piku uses (Nginx configs etc)
 
@@ -160,7 +160,7 @@ Commands:
 
 ```
 
-### Out of memory - NPM install
+##### Out of memory - NPM install
 
 Log into the server and set 
 ```
@@ -169,14 +169,14 @@ export NODE_OPTIONS=--max_old_space_size=2048
 
 Where 2048 is the installed memory on the server. You maybe need to increase the server resources for this.
 
-### www redirect to https (Do this instead of the override below)
+##### www redirect to https (Do this instead of the override below)
 
 In ENV
 ```
 NGINX_SERVER_NAME=mysite.com  www.mysite.com
 ```
 
-### Nginx override. Redirect to https (Don't do this)
+##### Nginx override. Redirect to https (Don't do this)
 
 Override nginx to add a www. redirect to https
 
@@ -204,7 +204,7 @@ nginx -t
 nginx -s reload
 ```
 
-### DNS entries for piku sites
+##### DNS entries for piku sites
 
 A Record @ serverip
 A Record www serverip

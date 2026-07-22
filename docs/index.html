@@ -1,47 +1,342 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-
-    <title>Kasey Hinton</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="description" content="Knowledge archive and resume" />
-    <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" />
-  </head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
+    <title>kaseyhinton.com</title>
 
-  <body>
     <style>
-      .markdown-section {
-        max-width: 1200px !important;
+      body {
+        background-color: var(--pico-background-color);
+        color: var(--pico-color);
+        min-height: 100vh;
+      }
+
+      progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+        z-index: 9;
+      }
+
+      button:has(svg) {
+        padding: 0.5rem;
+        line-height: 1;
+      }
+
+      /* the hamburger dropdown. [popover] puts it in the top layer, so it gets
+         light dismiss and Esc for free and never needs a z-index. The UA
+         stylesheet centers it in the viewport; pin it under its button
+         instead. */
+      #menu {
+        /* Pico's `nav { display: flex }` is author-origin, so it beats the UA
+           rule that hides a closed popover - hide it here instead */
+        display: none;
+        inset: auto;
+        margin: 0;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: var(--pico-border-radius);
+        background: var(--pico-card-background-color);
+        box-shadow: var(--pico-card-box-shadow);
+        /* fallback for browsers without anchor positioning */
+        top: 4rem;
+        left: 1rem;
+      }
+
+      #menu:popover-open {
+        display: block;
+      }
+
+      @supports (anchor-name: --menu-button) {
+        #menu-button {
+          anchor-name: --menu-button;
+        }
+
+        #menu {
+          position-anchor: --menu-button;
+          top: calc(anchor(bottom) + 0.5rem);
+          left: anchor(left);
+        }
+      }
+
+      /* Pico lays nav lists out in a row; a dropdown wants a column */
+      #menu ul {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        margin: 0;
+      }
+
+      a[aria-current] {
+        font-weight: bold;
+      }
+
+      article {
+        overflow: hidden;
+      }
+
+      /* snarkdown separates blocks with <br />, not <p> */
+      article br {
+        display: block;
+        margin-block: 0.5rem;
+      }
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 2rem;
+      }
+
+      pre {
+        margin-top: var(--pico-spacing);
       }
     </style>
-    <div id="app"></div>
-    <script>
-      var repo = "https://github.com/kaseyhinton";
+  </head>
+  <body></body>
 
-      window.$docsify = {
-        name: "kaseyhinton.com",
-        repo: repo,
-        auto2top: true,
-        coverpage: true,
-        loadSidebar: true,
-        subMaxLevel: 4,
-        themeColor: "#212121",
-      };
-    </script>
+  <!-- snarkdown 2.0.0 (MIT) - https://github.com/developit/snarkdown -->
+  <script>
+    /* prettier-ignore */
+    !function(e,n){"object"==typeof exports&&"undefined"!=typeof module?module.exports=n():"function"==typeof define&&define.amd?define(n):(e=e||self).snarkdown=n()}(this,function(){var e={"":["<em>","</em>"],_:["<strong>","</strong>"],"*":["<strong>","</strong>"],"~":["<s>","</s>"],"\n":["<br />"]," ":["<br />"],"-":["<hr />"]};function n(e){return e.replace(RegExp("^"+(e.match(/^(\t| )+/)||"")[0],"gm"),"")}function r(e){return(e+"").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}return function t(o,a){var c,s,l,g,u,p=/((?:^|\n+)(?:\n---+|\* \*(?: \*)+)\n)|(?:^``` *(\w*)\n([\s\S]*?)\n```$)|((?:(?:^|\n+)(?:\t|  {2,}).+)+\n*)|((?:(?:^|\n)([>*+-]|\d+\.)\s+.*)+)|(?:!\[([^\]]*?)\]\(([^)]+?)\))|(\[)|(\](?:\(([^)]+?)\))?)|(?:(?:^|\n+)([^\s].*)\n(-{3,}|={3,})(?:\n+|$))|(?:(?:^|\n+)(#{1,6})\s*(.+)(?:\n+|$))|(?:`([^`].*?)`)|(  \n\n*|\n{2,}|__|\*\*|[_*]|~~)/gm,f=[],i="",d=a||{},m=0;function h(n){var r=e[n[1]||""],t=f[f.length-1]==n;return r?r[1]?(t?f.pop():f.push(n),r[0|t]):r[0]:n}function $(){for(var e="";f.length;)e+=h(f[f.length-1]);return e}for(o=o.replace(/^\[(.+?)\]:\s*(.+)$/gm,function(e,n,r){return d[n.toLowerCase()]=r,""}).replace(/^\n+|\n+$/g,"");l=p.exec(o);)s=o.substring(m,l.index),m=p.lastIndex,c=l[0],s.match(/[^\\](\\\\)*\\$/)||((u=l[3]||l[4])?c='<pre class="code '+(l[4]?"poetry":l[2].toLowerCase())+'"><code'+(l[2]?' class="language-'+l[2].toLowerCase()+'"':"")+">"+n(r(u).replace(/^\n+|\n+$/g,""))+"</code></pre>":(u=l[6])?(u.match(/\./)&&(l[5]=l[5].replace(/^\d+/gm,"")),g=t(n(l[5].replace(/^\s*[>*+.-]/gm,""))),">"==u?u="blockquote":(u=u.match(/\./)?"ol":"ul",g=g.replace(/^(.*)(\n|$)/gm,"<li>$1</li>")),c="<"+u+">"+g+"</"+u+">"):l[8]?c='<img src="'+r(l[8])+'" alt="'+r(l[7])+'">':l[10]?(i=i.replace("<a>",'<a href="'+r(l[11]||d[s.toLowerCase()])+'">'),c=$()+"</a>"):l[9]?c="<a>":l[12]||l[14]?c="<"+(u="h"+(l[14]?l[14].length:l[13]>"="?1:2))+">"+t(l[12]||l[15],d)+"</"+u+">":l[16]?c="<code>"+r(l[16])+"</code>":(l[17]||l[1])&&(c=h(l[17]||"--"))),i+=s,i+=c;return(i+o.substring(m)+$()).replace(/^\n+|\n+$/g,"")}});
+  </script>
 
-    <!-- Docsify core -->
-    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script>
+    const html = (strings, ...values) =>
+      strings.reduce((acc, str, idx) => acc + str + (values[idx] ?? ""), "");
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script>
-    <script src="//unpkg.com/docsify-pdf-embed-plugin/src/docsify-pdf-embed.js"></script>
+    const sunIcon = html`<svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </svg>`;
 
-    <!-- Syntax highlighting -->
-    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-makefile.min.js"></script>
-  </body>
+    const moonIcon = html`<svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path
+        d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+      />
+    </svg>`;
+
+    const menuIcon = html`<svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M4 5h16" />
+      <path d="M4 12h16" />
+      <path d="M4 19h16" />
+    </svg>`;
+
+    let state = {
+      route: null,
+      isLoading: false,
+      nav: "",
+      content: "",
+      theme: localStorage.getItem("theme") ?? "light",
+    };
+
+    function setState(partial) {
+      Object.assign(state, partial);
+      localStorage.setItem("theme", state.theme);
+      rerender();
+    }
+
+    // --- markdown ------------------------------------------------------------
+    // snarkdown is 1KB and needs three nudges: it only matches \n (these files
+    // are CRLF), it reads every _ as emphasis (id_rsa), and it has no notion of
+    // raw HTML, so `git fetch origin <branch>` becomes an invisible element.
+
+    const SLOT = String.fromCharCode(1); // marks a stashed HTML tag
+    const USCORE = String.fromCharCode(2); // marks an intra-word underscore
+
+    const KNOWN_TAGS = new Set(
+      "a abbr b blockquote br code em h1 h2 h3 h4 h5 h6 hr i img kbd li ol p pre s small span strong sub sup table tbody td th thead tr u ul".split(
+        " ",
+      ),
+    );
+
+    function toHtml(md) {
+      const tags = [];
+
+      const source = md
+        .replace(/\r\n?/g, "\n")
+        // leave fenced blocks and inline code exactly as written
+        .split(/(^``` *\w*\n[\s\S]*?\n```$|`[^`\n]*`)/gm)
+        .map((part, i) =>
+          i % 2
+            ? part
+            : part
+                .replace(/\]\(([^)]+)\.md\)/g, "](#/$1)") // piku.md -> #/piku
+                .replace(/\]\(\/#[^)]*\)/g, "](#/)") // docsify's /#overview
+                .replace(/<\/?([a-zA-Z][\w-]*)[^<>]*>/g, (tag, name) => {
+                  const keep = KNOWN_TAGS.has(name.toLowerCase())
+                    ? tag
+                    : tag.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                  return SLOT + (tags.push(keep) - 1) + SLOT;
+                })
+                .replace(/(\w)_(?=\w)/g, "$1" + USCORE),
+        )
+        .join("");
+
+      return snarkdown(source)
+        .replaceAll(USCORE, "_")
+        .replace(new RegExp(SLOT + "(\\d+)" + SLOT, "g"), (_, i) => tags[i])
+        .replace(
+          /<h([1-6])>(.*?)<\/h\1>/g,
+          (_, level, text) =>
+            `<h${level} id="${slug(text)}">${text}</h${level}>`,
+        );
+    }
+
+    const slug = (text) =>
+      text
+        .replace(/<[^>]*>/g, "")
+        .toLowerCase()
+        .replace(/[^\w]+/g, "-")
+        .replace(/^-|-$/g, "");
+
+    // --- data ----------------------------------------------------------------
+
+    async function load(file) {
+      const res = await fetch(file, { cache: "no-cache" });
+      if (!res.ok) throw new Error(res.status);
+      return toHtml(await res.text());
+    }
+
+    async function loadPage() {
+      const file = (state.route ?? "README") + ".md";
+      setState({ isLoading: true });
+      try {
+        setState({ isLoading: false, content: await load(file) });
+      } catch {
+        setState({
+          isLoading: false,
+          content: html`<h1>Not found</h1>
+            <p>Nothing at <code>${file}</code>.</p>
+            <p><a href="#/">Back home</a></p>`,
+        });
+      }
+    }
+
+    async function loadNav() {
+      // flatten the nested bullets so snarkdown sees one plain list
+      const res = await fetch("_sidebar.md", { cache: "no-cache" });
+      setState({ nav: toHtml((await res.text()).replace(/^[ \t]+/gm, "")) });
+    }
+
+    function onRoute() {
+      // a bare #anchor is a scroll target, not a route
+      if (location.hash && !location.hash.startsWith("#/")) return;
+      setState({
+        route:
+          location.hash.replace(/^#\//, "").split("/").filter(Boolean)[0] ??
+          null,
+      });
+      loadPage();
+      scrollTo(0, 0);
+    }
+
+    // --- views ---------------------------------------------------------------
+
+    const navbar = () => html`
+      <progress ${state.isLoading ? "" : "hidden"}></progress>
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <button
+                id="menu-button"
+                popovertarget="menu"
+                aria-label="Toggle menu"
+              >
+                ${menuIcon}
+              </button>
+              <nav id="menu" popover>
+                ${state.nav.replaceAll(
+                  `href="#/${state.route ?? ""}"`,
+                  (match) => `${match} aria-current="page"`,
+                )}
+              </nav>
+            </li>
+            <li>
+              <a href="#/"><strong>kaseyhinton.com</strong></a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="https://github.com/kaseyhinton">GitHub</a></li>
+            <li>
+              <button
+                aria-label="Toggle theme"
+                onclick="setState({ theme: state.theme === 'light' ? 'dark' : 'light' })"
+              >
+                ${state.theme === "dark" ? sunIcon : moonIcon}
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    `;
+
+    const page = () => html`
+      <main>
+        <article>${state.content}</article>
+      </main>
+    `;
+
+    function rerender() {
+      // this throws away the whole tree, so picking a page also closes the
+      // menu popover along with it
+      document.body.setAttribute("data-theme", state.theme);
+      document.body.innerHTML = `${navbar()} ${page()}`;
+      if (location.hash && !location.hash.startsWith("#/")) {
+        document.getElementById(location.hash.slice(1))?.scrollIntoView();
+      }
+    }
+
+    onRoute();
+    loadNav();
+    window.addEventListener("hashchange", onRoute);
+  </script>
 </html>

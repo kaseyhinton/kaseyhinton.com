@@ -1,8 +1,6 @@
 # Linux
 
-## Useful commands
-
-### Process Management
+##### Process Management
 
 - `top` (Display all processes)
 - `pgrep :process` (Search processes)
@@ -13,7 +11,7 @@
 - `fg` (Bring job into the foreground to Ctrl+c)
 
 
-### Webmin and Nginx setup on Alpine linux
+##### Webmin and Nginx setup on Alpine linux
 
 ```
 apk update
@@ -60,7 +58,7 @@ Add
 sudo certbot --nginx -d mydomain.com www.mydomain.com
 ```
 
-#### Installing bun on Alpine
+###### Installing bun on Alpine
 
 ```bash
     curl -fsSL https://bun.sh/install | bash
@@ -70,9 +68,8 @@ sudo certbot --nginx -d mydomain.com www.mydomain.com
     source ~/.profile
 ```
 
-### Running a back-end service on Alpine
 
-#### Run the back-end with OpenRC (Alpine Linux)
+###### Run the back-end with OpenRC (Alpine Linux)
 
 Create the OpenRC service at `/etc/init.d/my-backend`:
 
@@ -116,7 +113,7 @@ sudo rc-service my-backend start
 sudo rc-service my-backend status
 ```
 
-#### Make bun accessible for OpenRc user
+###### Make bun accessible for OpenRc user
 
 ```bash
 # 1) Put bun in a public path (copy, not symlink from /root)
@@ -133,7 +130,7 @@ sudo rc-service hftv-backend status
 curl -sS http://127.0.0.1:3002/health
 ```
 
-#### Deploying nginx Basic Auth (Alpine Linux example)
+###### Deploying nginx Basic Auth (Alpine Linux example)
 
 1. Install apache2-utils to manage htpasswd:
 
@@ -179,7 +176,7 @@ sudo nginx -t && sudo rc-service nginx reload
 curl -u admin:password https://mywebsite.com/api/health -i
 ```
 
-### Alpine linux SQLite DB file not writable
+##### Alpine linux SQLite DB file not writable
 
 ```bash
 sudo chown nobody:nogroup /var/www/mywebsite.com/back-end/db.sqlite

@@ -118,11 +118,11 @@ defaults.pcm.card 2;
 
 ###### Plugins
 
-####### APULSE
+###### APULSE
 
 - `sudo vpm install apulse` (install pulse audio emulation for ALSA)
 
-####### ALSA-UTILS (optional)
+###### ALSA-UTILS (optional)
 Persist volume settings
 
 - `sudo vpm install alsa-utils` (install util pkg for service setup)

@@ -1,6 +1,6 @@
 # Nodejs
 
-## How to compile a NodeJS application to a binary file
+##### How to compile a NodeJS application to a binary file
 
 Makes portable, obscures source code, bundles node runtime and dependencies
 
@@ -14,7 +14,7 @@ pkg index.js -o mybinary # assumes target from current OS
 # pkg index.js -o mybinary --targets node-16-win-x64 --compress GZip
 ```
 
-## Find and kill orphaned node cli apps by port
+##### Find and kill orphaned node cli apps by port
 
 Use an elevated command prompt
 
